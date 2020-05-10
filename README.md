@@ -19,5 +19,7 @@ APP使用说明:
 
 只测试了mp4、mkv、flv三种格式，均可以成功播放
 
+安装APK需要使用 adb install -t 命令
+
 
 

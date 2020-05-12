@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ListIte
         // 检查权限
         if (!checkPermissionAllGranted(mPermissionsArrays)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                animationView.animate().alpha(0);
                 requestPermissions(mPermissionsArrays, REQUEST_PERMISSION);
             }
         }

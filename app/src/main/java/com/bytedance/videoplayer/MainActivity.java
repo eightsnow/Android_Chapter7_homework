@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ListIte
                     getVideoFile(allVideoList, Environment.getExternalStorageDirectory());// 扫描手机内部存储
                     String path = getAppRootOfSdCardRemovable();
                     if(path != null)
-                        getVideoFile(allVideoList, new File(getAppRootOfSdCardRemovable()));// 扫描手机外置SD卡
+                        getVideoFile(allVideoList, new File(path));// 扫描手机外置SD卡
                     handler.post(new Runnable() {
                         @Override
                         public void run() {

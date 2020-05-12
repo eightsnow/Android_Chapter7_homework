@@ -14,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.airbnb.lottie.LottieAnimationView;
 import java.io.File;
 import java.io.FileFilter;
@@ -105,7 +107,10 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ListIte
                         @Override
                         public void run() {
                             animationView.animate().alpha(0).setDuration(500);
-                            updateRecycleView();
+                            if(allVideoList.size() != 0)
+                                updateRecycleView();
+                            else
+                                Toast.makeText(MainActivity.this, "not found videos", Toast.LENGTH_SHORT).show();
                             buttonSearch.setEnabled(true);
                             isSearch = false;
                         }

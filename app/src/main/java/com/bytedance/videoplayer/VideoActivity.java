@@ -58,21 +58,21 @@ public class VideoActivity extends AppCompatActivity {
             videoView.setOrientation(false);
         }
         videoView.setVideoPath(path);
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                //设置 MediaPlayer 的 OnSeekComplete 监听
-                mp.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
-                    @Override
-                    public void onSeekComplete(MediaPlayer mp) {
-                        // seekTo 方法完成时的回调
-                        if(flag){
-                            videoView.start();
-                        }
-                    }
-                });
-            }
-        });
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                //设置 MediaPlayer 的 OnSeekComplete 监听
+//                mp.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+//                    @Override
+//                    public void onSeekComplete(MediaPlayer mp) {
+//                        // seekTo 方法完成时的回调
+//                        if(flag){
+//                            videoView.start();
+//                        }
+//                    }
+//                });
+//            }
+//        });
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
             @Override
             public void onCompletion(MediaPlayer mediaPlayer){
@@ -136,6 +136,7 @@ public class VideoActivity extends AppCompatActivity {
             videoView.seekTo(currentPosition);
             changeTimeView(currentPosition, duration);
             seekBar.setProgress((int)((float)currentPositionForPause/durationForPause*100));
+            videoView.start();
 
             update();
         }
@@ -199,6 +200,8 @@ public class VideoActivity extends AppCompatActivity {
         videoView.seekTo(currentPositionForPause);
         changeTimeView(currentPositionForPause, durationForPause);
         seekBar.setProgress((int)((float)currentPositionForPause/durationForPause*100));
+        if(flag)
+            videoView.start();
 
         update();
     }
